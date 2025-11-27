@@ -11,7 +11,6 @@ const bricolage = Bricolage_Grotesque({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.impacttechfrica.com.com"),
   title: {
-    title: "Impact Tech",
     default: "Impact Tech",
     template: "%s | Impact Tech",
   },

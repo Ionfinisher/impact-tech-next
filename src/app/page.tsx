@@ -19,6 +19,7 @@ import {
   TwitterLogo,
   InstagramLogo,
 } from "@phosphor-icons/react/ssr";
+import { VideoPlayButton } from "@/components/VideoPlayButton";
 
 export default function Home() {
   return (
@@ -268,12 +269,7 @@ export default function Home() {
                     Your browser does not support the video tag.
                   </video>
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                    <button
-                      id="play"
-                      className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300"
-                    >
-                      <Play size={24} weight="duotone" />
-                    </button>
+                    <VideoPlayButton />
                   </div>
                 </div>
               </div>
