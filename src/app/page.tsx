@@ -295,7 +295,7 @@ export default function Home() {
               <div>
                 <ul className="space-y-4">
                   <li className="flex items-center space-x-6 p-4 rounded-lg bg-[#f7f7f7]/50 dark:bg-gray-800/50">
-                    <div className="flex items-center justify-center w-16 h-16 border-2 border-[#0d1b33]/20 dark:border-[#0d1b33]/30 rounded-full bg-background-light dark:bg-gray-800 flex-shrink-0">
+                    <div className="flex items-center justify-center w-16 h-16 border-2 border-[#0d1b33]/20 dark:border-[#0d1b33]/30 rounded-full bg-background-light dark:bg-gray-800 shrink-0">
                       <User
                         size={24}
                         weight="duotone"
@@ -308,7 +308,7 @@ export default function Home() {
                     </div>
                   </li>
                   <li className="flex items-center space-x-6 p-4 rounded-lg bg-[#f7f7f7]/50 dark:bg-gray-800/50">
-                    <div className="flex items-center justify-center w-16 h-16 border-2 border-[#0d1b33]/20 dark:border-[#0d1b33]/30 rounded-full bg-background-light dark:bg-gray-800 flex-shrink-0">
+                    <div className="flex items-center justify-center w-16 h-16 border-2 border-[#0d1b33]/20 dark:border-[#0d1b33]/30 rounded-full bg-background-light dark:bg-gray-800 shrink-0">
                       <ListChecks size={24} weight="duotone" />
                     </div>
                     <div>
@@ -319,7 +319,7 @@ export default function Home() {
                     </div>
                   </li>
                   <li className="flex items-center space-x-6 p-4 rounded-lg bg-[#f7f7f7]/50 dark:bg-gray-800/50">
-                    <div className="flex items-center justify-center w-16 h-16 border-2 border-[#0d1b33]/20 dark:border-[#0d1b33]/30 rounded-full bg-background-light dark:bg-gray-800 flex-shrink-0">
+                    <div className="flex items-center justify-center w-16 h-16 border-2 border-[#0d1b33]/20 dark:border-[#0d1b33]/30 rounded-full bg-background-light dark:bg-gray-800 shrink-0">
                       <Tag
                         size={24}
                         weight="duotone"
@@ -334,7 +334,7 @@ export default function Home() {
                     </div>
                   </li>
                   <li className="flex items-center space-x-6 p-4 rounded-lg bg-[#f7f7f7]/50 dark:bg-gray-800/50">
-                    <div className="flex items-center justify-center w-16 h-16 border-2 border-[#0d1b33]/20 dark:border-[#0d1b33]/30 rounded-full bg-background-light dark:bg-gray-800 flex-shrink-0">
+                    <div className="flex items-center justify-center w-16 h-16 border-2 border-[#0d1b33]/20 dark:border-[#0d1b33]/30 rounded-full bg-background-light dark:bg-gray-800 shrink-0">
                       <Pencil
                         size={24}
                         weight="duotone"
@@ -382,14 +382,14 @@ export default function Home() {
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuALxB6F1UJevbC4hxRpF91J7uTOqZOt4IJQdblX2HUsQcTvzFOKq5HmM-GaAIZU6YLst5T9TNCu3_44bZi7nJkTwCjXQewx8QhP5sT8uTN-_Bqc6o1H_S0fmPAdyirqsKBBREnAj7aCW9nwHw3BR2dFe_KHOFuy8St4f9bBbIw5qX4YqaiVIcaYTkazs_rPO2rBbo305Cfjwk4-slvyIsy6CGmTDSn79tW-DC1IhvTDBp8zkP8AEM8R75soz16Gq1kuXZvo_Pb336Y"
                   />
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col grow">
                   <h3 className="text-xl font-bold text-blue-950 dark:text-white group-hover:text-primary transition-colors">
                     Service Architecture
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                     18 mars 2025 / Aucun commentaire
                   </p>
-                  <p className="mt-4 text-gray-600 dark:text-gray-300 flex-grow">
+                  <p className="mt-4 text-gray-600 dark:text-gray-300 grow">
                     Savez-vous qu'un être humain passe en moyenne 5/6 de son
                     temps dans un bâtiment? Le bâtiment est notre espace de vie
                     quotidien...
@@ -417,14 +417,14 @@ export default function Home() {
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT2qthi9GGcFvpDG_9bMi8FmtmCuusOhVQ8MuU0yCmwTJnbc65Oj3HIQD4oJ2uVi8hdDE_m4XTtgkYHa9AU47QpebvYIhJ2my87450CO_WCWK93nGm8x8OZ7zDqtx4q-jXQm5VEBP_SNwt_dQuMt8eU1teHN3cOP4skSrZcP7B6cOOJoN0NpJrp46CPuN26eXVWkrWw5qjO5mB-DQImnEVH_o0OsURyMwfor1elBSRZ5ruBRqqZDHCmEZmbFaRu1vccBbQIDkQA4g"
                   />
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col grow">
                   <h3 className="text-xl font-bold text-blue-950 dark:text-white group-hover:text-primary transition-colors">
                     Service Technologie
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                     23 février 2025 / Aucun commentaire
                   </p>
-                  <p className="mt-4 text-gray-600 dark:text-gray-300 flex-grow">
+                  <p className="mt-4 text-gray-600 dark:text-gray-300 grow">
                     Notre service technologie propose une gamme complète de
                     solutions adaptées aux besoins des entreprises et des
                     particuliers. Nous offrons...
@@ -452,14 +452,14 @@ export default function Home() {
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVgUiurGUhmSMpAp05vAl0KzCYsc7_-0drXXVjtsuAJlty7WYSCrzIFUeYenN9BepcJ1UQ9UrDfFao49Uzj7eFr_0obvAfH5UmgTyWSmpN9CdyZ7XFCC2TuG4_xwxTSsHrDEi5fFgJxEjjK5IDYxXSvsdYrPitQG5MjENFqp54r3ZHJGLLxcyUq1WtzgFbEujrVElnp-P7FGR7FxKnAx7NLk-FGlK60ohfwqc5W-hism5OWuI49KWAY5hdumAAWTGQNtZpc_WVwUI"
                   />
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col grow">
                   <h3 className="text-xl font-bold text-blue-950 dark:text-white group-hover:text-primary transition-colors">
                     Service Électricité
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                     23 février 2025 / Aucun commentaire
                   </p>
-                  <p className="mt-4 text-gray-600 dark:text-gray-300 flex-grow">
+                  <p className="mt-4 text-gray-600 dark:text-gray-300 grow">
                     Notre service d'électricité propose une gamme complète de
                     solutions adaptées aux besoins des particuliers, incluant
                     l'installation, l'élaboration de plans électriques, la...
