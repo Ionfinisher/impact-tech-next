@@ -42,21 +42,21 @@ export default function Home() {
             <div className="hidden md:flex items-center space-x-8 text-white font-medium">
               <Link
                 className="relative hover:text-primary text-primary transition-colors py-1 group"
-                href="#"
+                href="/#"
               >
                 <span>Accueil</span>
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-100 origin-center transition-transform"></span>
               </Link>
               <Link
                 className="relative hover:text-primary transition-colors py-1 group"
-                href="#"
+                href="/about"
               >
                 <span>A Propos</span>
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-300"></span>
               </Link>
               <Link
                 className="relative hover:text-primary transition-colors py-1 group"
-                href="#"
+                href="/services"
               >
                 <span>Services</span>
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-300"></span>
@@ -241,7 +241,7 @@ export default function Home() {
             </div>
             <div className="text-center mt-12">
               <Link
-                className="inline-block px-8 py-3 border border-blue-bg-blue-950 dark:border-gray-400 rounded-full font-semibold text-blue-950 dark:text-gray-200 hover:bg-blue-950 hover:text-white dark:hover:bg-primary dark:hover:border-[#0d1b33] dark:hover:text-blue-950 transition-colors duration-300"
+                className="inline-block px-8 py-3 border border-blue-bg-blue-950 dark:border-gray-400 rounded-full font-semibold text-blue-950 dark:text-gray-200 hover:bg-blue-950 hover:text-white dark:hover:bg-primary dark:hover:border-[#0d1b33] dark:hover:text-white transition-colors duration-300"
                 href="#"
               >
                 Tous les services
