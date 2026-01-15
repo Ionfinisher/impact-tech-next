@@ -196,7 +196,7 @@ export default function PolitiqueConfidentialite() {
           </h1>
 
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-8">
-            Dernière mise à jour : Janvier 2025
+            Dernière mise à jour : 06 Janvier 2026
           </p>
 
           <div className="prose prose-lg dark:prose-invert max-w-none space-y-8">
