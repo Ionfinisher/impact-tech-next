@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { List, X } from "@phosphor-icons/react/ssr";
 
 interface HeaderProps {
   activeLink?: "home" | "about" | "services" | "news" | "contact";
@@ -10,6 +11,7 @@ interface HeaderProps {
 
 export function Header({ activeLink = "home" }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +21,26 @@ export function Header({ activeLink = "home" }: HeaderProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   const getLinkClasses = (link: string) => {
     const isActive = activeLink === link;
@@ -73,10 +95,130 @@ export function Header({ activeLink = "home" }: HeaderProps) {
               <span className={getUnderlineClasses("contact")}></span>
             </Link>
           </div>
-          <button className="md:hidden text-white">
-            <span className="material-symbols-outlined text-3xl">menu</span>
+          <button
+            className="md:hidden text-white z-50"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X size={32} weight="bold" />
+            ) : (
+              <List size={32} weight="bold" />
+            )}
           </button>
         </nav>
+
+        {/* Mobile Menu Drawer */}
+        <div
+          className={`md:hidden fixed top-0 left-0 z-40 w-72 h-screen p-4 overflow-y-auto transition-transform duration-300 bg-blue-950 ${
+            isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+          tabIndex={-1}
+          aria-labelledby="drawer-label"
+        >
+          <div className="border-b border-gray-700 pb-4 flex items-center justify-between">
+            <Link
+              className="flex items-center"
+              href="/"
+              onClick={closeMobileMenu}
+            >
+              <Image
+                alt="Impact Tech logo"
+                className="h-8 w-auto"
+                src="/images/LOGO-IMPACT-TECH.png"
+                width={120}
+                height={40}
+              />
+            </Link>
+            <button
+              type="button"
+              onClick={toggleMobileMenu}
+              className="text-gray-400 bg-transparent hover:text-white hover:bg-gray-800 rounded-lg w-9 h-9 flex items-center justify-center"
+              aria-label="Close menu"
+            >
+              <X size={24} weight="bold" />
+            </button>
+          </div>
+
+          <div className="py-5">
+            <ul className="space-y-2 font-medium">
+              <li>
+                <Link
+                  href="/"
+                  onClick={closeMobileMenu}
+                  className={`flex items-center px-2 py-2.5 rounded-lg transition-colors ${
+                    activeLink === "home"
+                      ? "bg-primary/20 text-primary"
+                      : "text-white hover:bg-gray-800"
+                  }`}
+                >
+                  <span>Accueil</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  onClick={closeMobileMenu}
+                  className={`flex items-center px-2 py-2.5 rounded-lg transition-colors ${
+                    activeLink === "about"
+                      ? "bg-primary/20 text-primary"
+                      : "text-white hover:bg-gray-800"
+                  }`}
+                >
+                  <span>A Propos</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  onClick={closeMobileMenu}
+                  className={`flex items-center px-2 py-2.5 rounded-lg transition-colors ${
+                    activeLink === "services"
+                      ? "bg-primary/20 text-primary"
+                      : "text-white hover:bg-gray-800"
+                  }`}
+                >
+                  <span>Services</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#news"
+                  onClick={closeMobileMenu}
+                  className={`flex items-center px-2 py-2.5 rounded-lg transition-colors ${
+                    activeLink === "news"
+                      ? "bg-primary/20 text-primary"
+                      : "text-white hover:bg-gray-800"
+                  }`}
+                >
+                  <span>Actualités</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#contact"
+                  onClick={closeMobileMenu}
+                  className={`flex items-center px-2 py-2.5 rounded-lg transition-colors ${
+                    activeLink === "contact"
+                      ? "bg-primary/20 text-primary"
+                      : "text-white hover:bg-gray-800"
+                  }`}
+                >
+                  <span>Contact</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Overlay */}
+        {isMobileMenuOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-30 md:hidden"
+            onClick={closeMobileMenu}
+            aria-hidden="true"
+          />
+        )}
       </div>
     </header>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -14,6 +16,8 @@ import {
 import { VideoPlayButton } from "@/components/VideoPlayButton";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ServiceCard } from "@/components/ServiceCard";
+import { AnimatedText } from "@/components/AnimatedText";
 
 export default function Home() {
   return (
@@ -31,7 +35,15 @@ export default function Home() {
             <div className="text-center md:text-left">
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
                 Simplifiez vos projets dans
-                <br /> <span className="text-primary">La technologie</span>
+                <br />{" "}
+                <AnimatedText
+                  texts={[
+                    "La technologie",
+                    "Le bâtiment",
+                    "L'architecture",
+                    "L'électricité",
+                  ]}
+                />
               </h1>
               <p className="mt-6 text-lg text-gray-300 max-w-xl mx-auto md:mx-0">
                 Notre application innovante relie efficacement les utilisateurs
@@ -88,101 +100,35 @@ export default function Home() {
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="group relative border border-blue-bg-blue-950/10 dark:border-gray-700 rounded-lg p-8 flex flex-col items-center justify-center text-center bg-white dark:bg-gray-800/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden">
-                <div className="transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-4">
-                  <div className="bg-primary/10 p-4 rounded-full mb-4 justify-center flex">
-                    <HardHat
-                      size={92}
-                      weight="duotone"
-                      className="text-primary"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-lg">
-                    Service Bâtiment Construction
-                  </h3>
-                </div>
-                <div className="absolute inset-0 p-6 flex flex-col items-center justify-center bg-blue-950 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-90 group-hover:scale-100">
-                  <h4 className="font-bold text-lg text-primary mb-2">
-                    Service BC
-                  </h4>
-                  <p className="text-sm text-gray-300">
-                    Pour vos projets de Bâtiment Construction, nous mettons à
-                    votre disposition des ouvriers qualifiés, des matériaux de
-                    construction, des véhicules et bien d'autres
-                  </p>
-                </div>
-              </div>
-              <div className="group relative border border-blue-bg-blue-950/10 dark:border-gray-700 rounded-lg p-8 flex flex-col items-center justify-center text-center bg-white dark:bg-gray-800/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden">
-                <div className="transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-4">
-                  <div className="bg-primary/10 p-4 rounded-full mb-4 justify-center flex">
-                    <PencilRuler
-                      size={92}
-                      weight="duotone"
-                      className="text-primary"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-lg">
-                    Service Architecture
-                  </h3>
-                </div>
-                <div className="absolute inset-0 p-6 flex flex-col items-center justify-center bg-blue-950 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-90 group-hover:scale-100">
-                  <h4 className="font-bold text-lg text-primary mb-2">
-                    Architecture
-                  </h4>
-                  <p className="text-sm text-gray-300">
-                    Nous mettons à votre disposition les services d'architectes
-                    reconnus par l'Etat pour vos projets de constructions
-                  </p>
-                </div>
-              </div>
-              <div className="group relative border border-blue-bg-blue-950/10 dark:border-gray-700 rounded-lg p-8 flex flex-col items-center justify-center text-center bg-white dark:bg-gray-800/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden">
-                <div className="transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-4">
-                  <div className="bg-primary/10 p-4 rounded-full mb-4 justify-center flex">
-                    <Lightning
-                      size={92}
-                      weight="duotone"
-                      className="text-primary"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-lg">Service Electricité</h3>
-                </div>
-                <div className="absolute inset-0 p-6 flex flex-col items-center justify-center bg-blue-950 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-90 group-hover:scale-100">
-                  <h4 className="font-bold text-lg text-primary mb-2">
-                    Électricité
-                  </h4>
-                  <p className="text-sm text-gray-300">
-                    Nous mettons à votre disposition les services d'ingénieurs
-                    d'électricité haute, moyenne et basse tension.
-                  </p>
-                </div>
-              </div>
-              <div className="group relative border border-blue-bg-blue-950/10 dark:border-gray-700 rounded-lg p-8 flex flex-col items-center justify-center text-center bg-white dark:bg-gray-800/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden">
-                <div className="transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-4">
-                  <div className="bg-primary/10 p-4 rounded-full mb-4 justify-center flex">
-                    <Laptop
-                      size={92}
-                      weight="duotone"
-                      className="text-primary"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-lg">Service Technologie</h3>
-                </div>
-                <div className="absolute inset-0 p-6 flex flex-col items-center justify-center bg-blue-950 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-90 group-hover:scale-100">
-                  <h4 className="font-bold text-lg text-primary mb-2">
-                    Technologie
-                  </h4>
-                  <p className="text-sm text-gray-300">
-                    Nous disposons d'ingénieurs qualifiés pour vos projets de
-                    sites internet, d'applications, d'installations réseaux,
-                    caméra de surveillances...
-                  </p>
-                </div>
-              </div>
+              <ServiceCard
+                icon={HardHat}
+                title="Service Bâtiment Construction"
+                shortTitle="Service BC"
+                description="Pour vos projets de Bâtiment Construction, nous mettons à votre disposition des ouvriers qualifiés, des matériaux de construction, des véhicules et bien d'autres"
+              />
+              <ServiceCard
+                icon={PencilRuler}
+                title="Service Architecture"
+                shortTitle="Architecture"
+                description="Nous mettons à votre disposition les services d'architectes reconnus par l'Etat pour vos projets de constructions"
+              />
+              <ServiceCard
+                icon={Lightning}
+                title="Service Electricité"
+                shortTitle="Électricité"
+                description="Nous mettons à votre disposition les services d'ingénieurs d'électricité haute, moyenne et basse tension."
+              />
+              <ServiceCard
+                icon={Laptop}
+                title="Service Technologie"
+                shortTitle="Technologie"
+                description="Nous disposons d'ingénieurs qualifiés pour vos projets de sites internet, d'applications, d'installations réseaux, caméra de surveillances..."
+              />
             </div>
             <div className="text-center mt-12">
               <Link
                 className="inline-block px-8 py-3 border border-blue-bg-blue-950 dark:border-gray-400 rounded-full font-semibold text-blue-950 dark:text-gray-200 hover:bg-blue-950 hover:text-white dark:hover:bg-primary dark:hover:border-[#0d1b33] dark:hover:text-white transition-colors duration-300"
-                href="#"
+                href="/services"
               >
                 Tous les services
               </Link>
@@ -437,7 +383,7 @@ export default function Home() {
             <div className="mt-8">
               <Link
                 className="inline-block px-8 py-3 bg-blue-950 text-white rounded-full font-semibold hover:bg-primary hover:text-[#c2a356] transition-colors duration-300 shadow-lg"
-                href="#"
+                href="callto:+22870577803"
               >
                 Nous contacter
               </Link>
