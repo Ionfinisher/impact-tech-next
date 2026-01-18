@@ -90,7 +90,7 @@ export function Header({ activeLink = "home" }: HeaderProps) {
               <span>Actualités</span>
               <span className={getUnderlineClasses("news")}></span>
             </Link>
-            <Link className={getLinkClasses("contact")} href="#contact">
+            <Link className={getLinkClasses("contact")} href="/contact">
               <span>Contact</span>
               <span className={getUnderlineClasses("contact")}></span>
             </Link>
