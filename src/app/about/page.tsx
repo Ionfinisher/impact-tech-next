@@ -208,20 +208,28 @@ export default function About() {
 
               <h2 className="text-2xl font-semibold mt-6 mb-3">Nos valeurs</h2>
               <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2">
-                <li>Qualité & conformité aux normes</li>
-                <li>Transparence sur les coûts et délais</li>
-                <li>Suivi professionnel de A à Z</li>
-                <li>Support client et maintenance</li>
+                <li>Excellence</li>
+                <li>Professionnalisme</li>
+                <li>Différence</li>
               </ul>
 
+              <h2 className="text-2xl font-semibold mt-8 mb-3">Notre vision</h2>
+              <p className="text-gray-700 dark:text-gray-300">
+                Notre vision est de fournir des services intégrés tout en
+                garantissant qualité, conformité aux normes, innovation
+                technique et valeur ajoutée à chaque projet.
+              </p>
+
               <h2 className="text-2xl font-semibold mt-8 mb-3">
-                Ce que nous offrons
+                Notre Mission
               </h2>
               <p className="text-gray-700 dark:text-gray-300">
-                De l'étude initiale au suivi de chantier ou au déploiement
-                digital, nous proposons des offres modulaires adaptées aux
-                besoins et budgets. Nos équipes sont composées d'ingénieurs,
-                d'architectes, d'électriciens et de développeurs expérimentés.
+                Notre mission est de déployer des services performants en
+                construction, architecture, technologie et électricité sur
+                l&#8217;ensemble du territoire, tout en développant
+                progressivement une présence à l&#8217;international, dans le
+                respect des normes, des exigences de qualité et des objectifs de
+                développement durable.
               </p>
 
               <div className="mt-8 flex gap-4">
