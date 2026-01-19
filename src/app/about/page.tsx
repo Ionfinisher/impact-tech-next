@@ -200,10 +200,10 @@ export default function About() {
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                 Impact Tech connecte des particuliers et des entreprises aux
                 meilleurs prestataires dans les domaines du bâtiment &
-                construction, de l'architecture, de l'électricité et de la
-                technologie. Notre mission est de simplifier la réalisation de
-                vos projets en combinant expertise technique, transparence et
-                suivi client.
+                construction, de l&#8217;architecture, de l&#8217;électricité et
+                de la technologie. Notre mission est de simplifier la
+                réalisation de vos projets en combinant expertise technique,
+                transparence et suivi client.
               </p>
 
               <h2 className="text-2xl font-semibold mt-6 mb-3">Nos valeurs</h2>
