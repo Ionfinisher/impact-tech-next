@@ -2,6 +2,7 @@
   "name": "impact-tech-web",
   "version": "0.1.0",
   "private": true,
+  "postinstall": "patch-package",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -22,6 +23,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.4",
+    "patch-package": "^8.0.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
