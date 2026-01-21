@@ -1,76 +1,128 @@
 "use client";
 
-import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
-import { Play, Pause } from "@phosphor-icons/react";
-import "@splidejs/react-splide/css/skyblue";
+import { useState, useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
+import { Play, Pause, CaretLeft, CaretRight } from "@phosphor-icons/react";
 
 export function Carousel() {
-  const options = {
-    type: "loop",
-    autoplay: true,
-    pauseOnHover: false,
-    pauseOnFocus: false,
-    resetProgress: false,
-    interval: 8000,
-    height: "258px",
-  };
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+    Autoplay({ delay: 8000, stopOnInteraction: false }),
+  ]);
+
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const slides = [
-    {
-      src: "/images/COMPIL.png",
-      alt: "Notre équipe - Impact Tech",
-    },
-    {
-      src: "/images/G.C.png",
-      alt: "Projets de construction",
-    },
-    {
-      src: "/images/G.I.png",
-      alt: "Solutions technologiques",
-    },
-    {
-      src: "/images/G.E.png",
-      alt: "Installations électriques",
-    },
+    { src: "/images/COMPIL.png", alt: "Notre équipe - Impact Tech" },
+    { src: "/images/G.C.png", alt: "Projets de construction" },
+    { src: "/images/G.I.png", alt: "Solutions technologiques" },
+    { src: "/images/G.E.png", alt: "Installations électriques" },
   ];
 
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const toggleAutoplay = useCallback(() => {
+    const autoplay = emblaApi?.plugins()?.autoplay;
+    if (!autoplay) return;
+
+    const playOrStop = isPlaying ? autoplay.stop : autoplay.play;
+    playOrStop();
+    setIsPlaying(!isPlaying);
+  }, [emblaApi, isPlaying]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
   return (
-    <div className="wrapper max-w-7xl mx-auto px-4">
-      <Splide options={options} aria-label="autoplay" hasTrack={false}>
-        <div className="relative">
-          <SplideTrack>
-            {slides.map((slide, index) => (
-              <SplideSlide key={index}>
-                <div className="relative w-full h-64 rounded-lg overflow-hidden">
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    fill
-                    className="object-fill"
-                    priority={index === 0}
-                  />
-                </div>
-              </SplideSlide>
-            ))}
-          </SplideTrack>
+    <div className="wrapper max-w-7xl mx-auto">
+      <div className="relative overflow-hidden" ref={emblaRef}>
+        <div className="flex">
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className="flex-[0_0_100%] min-w-0 relative h-64 rounded-lg overflow-hidden"
+            >
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                className="object-cover"
+                priority={index === 0}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-between mt-4">
+        <div className="flex gap-2">
+          <button
+            onClick={scrollPrev}
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            aria-label="Previous slide"
+          >
+            <CaretLeft size={20} weight="bold" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            aria-label="Next slide"
+          >
+            <CaretRight size={20} weight="bold" />
+          </button>
         </div>
 
         <button
-          className="splide__toggle mt-4 border rounded-4xl p-2"
-          type="button"
+          onClick={toggleAutoplay}
+          className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+          aria-label={isPlaying ? "Pause" : "Play"}
         >
-          <span className="splide__toggle__play">
-            <Play weight="duotone" />
-          </span>
-          <span className="splide__toggle__pause">
-            <Pause weight="duotone" />
-          </span>
+          {isPlaying ? (
+            <Pause size={20} weight="duotone" />
+          ) : (
+            <Play size={20} weight="duotone" />
+          )}
         </button>
-        <div className="splide__progress mt-4">
-          <div className="splide__progress__bar bg-primary" />
-        </div>
-      </Splide>
+      </div>
+
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-4">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full transition-all ${
+              index === selectedIndex
+                ? "bg-primary w-8"
+                : "bg-gray-400 hover:bg-gray-500"
+            }`}
+            onClick={() => emblaApi?.scrollTo(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
