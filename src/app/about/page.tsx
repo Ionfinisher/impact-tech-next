@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUp, List, X } from "@phosphor-icons/react/ssr";
 import { Footer } from "@/components/Footer";
 import { useState, useEffect } from "react";
+import { Carousel } from "@/components/Carousel";
 
 export default function About() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -248,21 +249,8 @@ export default function About() {
               </div>
             </div>
 
-            <div className="rounded-lg overflow-hidden shadow">
-              <Image
-                src="/images/COMPIL.png"
-                alt="Impact Tech équipe"
-                width={1200}
-                height={800}
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-6 bg-background-light dark:bg-background-dark">
-                <p className="text-gray-600 dark:text-gray-300">
-                  Fondée pour rapprocher compétences et projets, Impact Tech
-                  accompagne les initiatives locales et régionales avec une
-                  approche responsable et durable.
-                </p>
-              </div>
+            <div>
+              <Carousel />
             </div>
           </div>
         </div>
