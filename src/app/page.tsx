@@ -56,7 +56,7 @@ export default function Home() {
               <Image
                 alt="Impact Tech mobile app mockup"
                 className="w-full max-w-xs md:max-w-xs lg:max-w-xs"
-                src="/images/home_page-left.png"
+                src="/images/iphone-app-mockup.png"
                 width={720}
                 height={720}
               />
