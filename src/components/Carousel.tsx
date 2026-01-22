@@ -67,7 +67,7 @@ export function Carousel() {
                 src={slide.src}
                 alt={slide.alt}
                 fill
-                className="object-cover"
+                className="object-fill"
                 priority={index === 0}
               />
             </div>
