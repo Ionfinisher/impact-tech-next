@@ -15,10 +15,9 @@ export function Carousel() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const slides = [
-    { src: "/images/COMPIL.png", alt: "Notre équipe - Impact Tech" },
-    { src: "/images/G.C.png", alt: "Projets de construction" },
-    { src: "/images/G.I.png", alt: "Solutions technologiques" },
-    { src: "/images/G.E.png", alt: "Installations électriques" },
+    { src: "/images/MISSION.png", alt: "Notre mission - Impact Tech" },
+    { src: "/images/VALEURS.png", alt: "Nos valeurs - Impact Tech" },
+    { src: "/images/VISION.png", alt: "Notre vision - Impact Tech" },
   ];
 
   const scrollPrev = useCallback(() => {
