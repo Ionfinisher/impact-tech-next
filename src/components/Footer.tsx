@@ -153,7 +153,9 @@ export function Footer() {
             </div>
             <div>
               <h4 className="text-lg font-semibold tracking-wider">ADRESSES</h4>
-              <p className="mt-4 text-sm text-gray-300">Lomé, Togo</p>
+              <p className="mt-4 text-sm text-gray-300">
+                Gbossimé, Rue des Equinoxes, Lomé-Togo
+              </p>
             </div>
           </div>
 
