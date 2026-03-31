@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Space_Grotesk } from "next/font/google";
-import "./globals.css";
-import { cn } from "@/lib/utils";
-
-const spaceGrotesk = Space_Grotesk({subsets:['latin'],variable:'--font-sans'});
+import { Bricolage_Grotesque } from "next/font/google";
+import "../globals.css";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { cookies } from "next/headers";
+import { AppSidebar } from "@/components/AppSidebar";
+import { RouteGuard } from "@/components/RouteGuard";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -12,7 +15,7 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.impacttechfrica.com"),
+  metadataBase: new URL("https://www.impacttechfrica.com/admin"),
   title: {
     default: "Impact Tech",
     template: "%s | Impact Tech",
@@ -48,10 +51,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Impact Tech",
-    description:
-      "Simplifiez vos projets de construction, d'architecture, d'électricité et du numérique avec Impact Tech ✅.",
-    url: "https://www.impacttechfrica.com.com",
-    siteName: "Impact Tech",
+    description: "Impact Tech Management App",
+    url: "https://www.impacttechfrica.com.com/app",
+    siteName: "Impact Tech - App",
     images: [
       {
         url: "/images/og_image.png",
@@ -73,22 +75,35 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  twitter: {
-    title: "Impact Tech",
-    card: "summary_large_image",
-    description:
-      "Simplifiez vos projets de construction, d'architecture, d'électricité et du numérique avec Impact Tech ✅.",
-  },
 };
 
-export default function RootLayout({
+export default async function AppLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
+
   return (
-    <html lang="fr" className={cn("scroll-smooth", "font-sans", spaceGrotesk.variable)} data-scroll-behavior="smooth">
-      <body className={`${bricolage.variable}`}>{children}</body>
-    </html>
+    <RouteGuard redirectTo="/login">
+      <TooltipProvider>
+        <SidebarProvider
+          defaultOpen={defaultOpen}
+          style={
+            {
+              "--sidebar-width": "calc(var(--spacing) * 72)",
+              "--header-height": "calc(var(--spacing) * 12)",
+            } as React.CSSProperties
+          }
+        >
+          <AppSidebar variant="inset" />
+          <SidebarInset>
+            <SiteHeader />
+            <TooltipProvider>{children}</TooltipProvider>
+          </SidebarInset>
+        </SidebarProvider>
+      </TooltipProvider>
+    </RouteGuard>
   );
 }

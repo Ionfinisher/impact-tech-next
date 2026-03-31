@@ -59,6 +59,7 @@ export default function Home() {
                 src="/images/iphone-app-mockup.png"
                 width={720}
                 height={720}
+                loading="eager"
               />
             </div>
           </div>
@@ -71,7 +72,7 @@ export default function Home() {
             <Link href="#">
               <Image
                 alt="Get it on Google Play badge"
-                className="h-24"
+                className="h-24 w-auto"
                 src="/images/App-Store.png"
                 width={324}
                 height={145}
@@ -80,7 +81,7 @@ export default function Home() {
             <Link href="#">
               <Image
                 alt="Available on the App Store badge"
-                className="h-24"
+                className="h-24 w-auto"
                 src="/images/Google-Play.png"
                 width={324}
                 height={145}
