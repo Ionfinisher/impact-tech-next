@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { IconPencil, IconPlus, IconTrash } from "@tabler/icons-react";
 import { toast } from "sonner";
+import { ZodError } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -134,8 +135,12 @@ export default function ServiceCategoriesPage() {
       setIsDrawerOpen(false);
       resetForm();
       await loadCategories();
-    } catch {
-      toast.error("Please check form values and try again.");
+    } catch (error) {
+      if (error instanceof ZodError) {
+        toast.error(error.issues[0]?.message ?? "Invalid form values.");
+      } else {
+        toast.error("Failed to save service category.");
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -177,7 +182,7 @@ export default function ServiceCategoriesPage() {
             ) : categories.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} className="text-muted-foreground">
-                  No service category found.
+                  No service categories found.
                 </TableCell>
               </TableRow>
             ) : (

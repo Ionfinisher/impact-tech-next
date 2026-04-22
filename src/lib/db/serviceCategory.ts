@@ -42,17 +42,13 @@ function normalizeSlug(rawSlug: string) {
 }
 
 function normalizeInput(input: ServiceCategoryInput) {
-  const parsed = serviceCategorySchema.parse({
-    ...input,
-    description: input.description ?? "",
-    isActive: input.isActive ?? true,
-  });
+  const parsed = serviceCategorySchema.parse(input);
 
-  const slug = normalizeSlug(parsed.slug || parsed.name);
+  const slug = normalizeSlug(parsed.slug);
 
   return serviceCategorySchema.parse({
     ...parsed,
-    slug: slug || normalizeSlug(parsed.name),
+    slug,
   });
 }
 
