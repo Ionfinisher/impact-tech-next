@@ -37,7 +37,7 @@ const data = {
     },
     {
       title: "Lifecycle",
-      url: "#",
+      url: "/app/service-categories",
       icon: IconListDetails,
     },
     {

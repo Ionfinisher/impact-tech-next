@@ -21,6 +21,7 @@ const storage = getStorage(app);
 const postsCollection = collection(db, "posts");
 const commentsCollection = collection(db, "comments");
 const usersCollection = collection(db, "users");
+const serviceCategoriesCollection = collection(db, "serviceCategories");
 
 export {
   app,
@@ -29,4 +30,5 @@ export {
   postsCollection,
   commentsCollection,
   usersCollection,
+  serviceCategoriesCollection,
 };
