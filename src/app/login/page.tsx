@@ -3,13 +3,15 @@ import Image from "next/image";
 
 export default function Login() {
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="relative min-h-screen w-full overflow-hidden">
       {/* Background Image */}
       <Image
         src="/images/COMPIL.png" // Replace with your image path
         alt="Background"
-        quality={100}
-        className="z-0 object-fill"
+        fill
+        quality={75}
+        priority
+        className="absolute inset-0 z-0 object-cover"
       />
 
       {/* Overlay to darken the background slightly for better text visibility */}
