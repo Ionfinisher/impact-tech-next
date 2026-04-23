@@ -50,7 +50,9 @@ export type UpdateServiceCategoryInput = z.infer<
   typeof serviceCategoryUpdateSchema
 >;
 
-const serviceCategoriesCollection = collection(db, "serviceCategories");
+function getServiceCategoriesCollection() {
+  return collection(db, "serviceCategories");
+}
 
 function toIsoDate(value: unknown): string | null {
   if (value == null) {
@@ -95,6 +97,7 @@ function mapServiceCategoryDoc(
 export async function createServiceCategory(
   input: CreateServiceCategoryInput,
 ): Promise<string> {
+  const serviceCategoriesCollection = getServiceCategoriesCollection();
   const payload = serviceCategoryCreateSchema.parse(input);
   const now = Timestamp.now();
 
@@ -111,6 +114,7 @@ export async function updateServiceCategory(
   serviceCategoryId: string,
   input: UpdateServiceCategoryInput,
 ): Promise<void> {
+  const serviceCategoriesCollection = getServiceCategoriesCollection();
   const payload = serviceCategoryUpdateSchema.parse(input);
   const docRef = doc(serviceCategoriesCollection, serviceCategoryId);
 
@@ -123,6 +127,7 @@ export async function updateServiceCategory(
 export async function deleteServiceCategory(
   serviceCategoryId: string,
 ): Promise<void> {
+  const serviceCategoriesCollection = getServiceCategoriesCollection();
   const docRef = doc(serviceCategoriesCollection, serviceCategoryId);
   await deleteDoc(docRef);
 }
@@ -130,6 +135,7 @@ export async function deleteServiceCategory(
 export async function getServiceCategoryById(
   serviceCategoryId: string,
 ): Promise<ServiceCategory | null> {
+  const serviceCategoriesCollection = getServiceCategoriesCollection();
   const docRef = doc(serviceCategoriesCollection, serviceCategoryId);
   const docSnap = await getDoc(docRef);
   if (!docSnap.exists()) {
@@ -140,6 +146,7 @@ export async function getServiceCategoryById(
 }
 
 export async function listAllServiceCategories(): Promise<ServiceCategory[]> {
+  const serviceCategoriesCollection = getServiceCategoriesCollection();
   const categoriesQuery = query(
     serviceCategoriesCollection,
     orderBy("createdAt", "desc"),
@@ -157,6 +164,7 @@ export async function listAllServiceCategories(): Promise<ServiceCategory[]> {
 export async function listServiceCategoriesByTypeId(
   typeId: string,
 ): Promise<ServiceCategory[]> {
+  const serviceCategoriesCollection = getServiceCategoriesCollection();
   const categoriesQuery = query(
     serviceCategoriesCollection,
     where("typeId", "==", typeId),
@@ -176,6 +184,7 @@ export function watchAllServiceCategories(
   onData: (serviceCategories: ServiceCategory[]) => void,
   onError?: (error: Error) => void,
 ) {
+  const serviceCategoriesCollection = getServiceCategoriesCollection();
   const categoriesQuery = query(
     serviceCategoriesCollection,
     orderBy("createdAt", "desc"),
@@ -206,6 +215,7 @@ export function watchServiceCategoryById(
   onData: (serviceCategory: ServiceCategory | null) => void,
   onError?: (error: Error) => void,
 ) {
+  const serviceCategoriesCollection = getServiceCategoriesCollection();
   const docRef = doc(serviceCategoriesCollection, serviceCategoryId);
 
   return onSnapshot(

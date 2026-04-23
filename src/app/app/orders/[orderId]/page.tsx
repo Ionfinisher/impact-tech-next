@@ -11,6 +11,7 @@ import {
   updateOrderStatus,
   watchOrderById,
 } from "@/db/order";
+import { type UserDocument, watchUserById } from "@/db/users";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -70,6 +71,7 @@ export default function OrderDetailsPage() {
   }, [params]);
 
   const [order, setOrder] = useState<Order | null>(null);
+  const [orderUser, setOrderUser] = useState<UserDocument | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [nextStatus, setNextStatus] = useState<Order["status"] | "">("");
@@ -106,6 +108,25 @@ export default function OrderDetailsPage() {
 
     return () => unsubscribe();
   }, [orderId]);
+
+  useEffect(() => {
+    if (!order?.userId) {
+      setOrderUser(null);
+      return;
+    }
+
+    const unsubscribe = watchUserById(
+      order.userId,
+      (nextUser) => {
+        setOrderUser(nextUser);
+      },
+      () => {
+        setOrderUser(null);
+      },
+    );
+
+    return () => unsubscribe();
+  }, [order?.userId]);
 
   const handleSaveStatus = async () => {
     if (!order || !nextStatus || nextStatus === order.status) {
@@ -215,11 +236,11 @@ export default function OrderDetailsPage() {
           <CardContent className="grid gap-3 sm:grid-cols-2">
             <p>
               <span className="font-medium">Client:</span>{" "}
-              {order.userFullName ?? "N/A"}
+              {orderUser?.displayName ?? "N/A"}
             </p>
             <p>
-              <span className="font-medium">ID utilisateur:</span>{" "}
-              {order.userId ?? "N/A"}
+              <span className="font-medium">Email client:</span>{" "}
+              {orderUser?.email ?? "N/A"}
             </p>
             <p>
               <span className="font-medium">Date creation:</span>{" "}
