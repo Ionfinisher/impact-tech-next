@@ -39,7 +39,8 @@ export function LoginForm({
       })
       .catch((error) => {
         setIsLoading(false);
-        setErrorMessage(error.message);
+        setErrorMessage("Identifiants invalides");
+        // setErrorMessage(error.message); For debugging only, not user-friendly
       });
   };
 

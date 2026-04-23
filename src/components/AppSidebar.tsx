@@ -2,11 +2,12 @@
 
 import * as React from "react";
 import {
-  IconChartBar,
+  IconBriefcase,
   IconDashboard,
   IconFolder,
   IconInnerShadowTop,
   IconListDetails,
+  IconMessage,
   IconSettings,
   IconUsers,
 } from "@tabler/icons-react";
@@ -31,35 +32,45 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/dashboard",
+      url: "/app",
       icon: IconDashboard,
       isActive: true,
     },
     {
-      title: "Lifecycle",
-      url: "#",
+      title: "Commandes",
+      url: "/app/orders",
       icon: IconListDetails,
     },
     {
-      title: "Analytics",
-      url: "#",
-      icon: IconChartBar,
-    },
-    {
-      title: "Projects",
-      url: "#",
+      title: "Catégories des services",
+      url: "/app/categories",
       icon: IconFolder,
     },
     {
-      title: "Team",
-      url: "#",
+      title: "Services",
+      url: "/app/services",
+      icon: IconBriefcase,
+    },
+    {
+      title: "Utilisateurs",
+      url: "/app/users",
       icon: IconUsers,
+    },
+    {
+      title: "Messages",
+      url: "/app/messages",
+      icon: IconMessage,
+    },
+    {
+      title: "Blog",
+      url: "#",
+      icon: IconFolder,
     },
   ],
   navSecondary: [
     {
       title: "Settings",
-      url: "/settings",
+      url: "/app/settings",
       icon: IconSettings,
     },
   ],

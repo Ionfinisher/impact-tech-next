@@ -131,12 +131,8 @@ function DragHandle({ id }: { id: number }) {
   );
 }
 
+// This is where you can modify the columns of the table, add new ones, or change how existing ones are rendered
 const columns: ColumnDef<z.infer<typeof schema>>[] = [
-  {
-    id: "drag",
-    header: () => null,
-    cell: ({ row }) => <DragHandle id={row.original.id} />,
-  },
   {
     id: "select",
     header: ({ table }) => (
@@ -164,7 +160,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "header",
+    accessorKey: "serviceName",
     header: "Header",
     cell: ({ row }) => {
       return <TableCellViewer item={row.original} />;
