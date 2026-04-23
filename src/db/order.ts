@@ -269,7 +269,7 @@ export async function getOrderById(orderId: string): Promise<Order | null> {
   return (await attachUserFullNames([order]))[0] ?? null;
 }
 
-export async function watchOrderById(
+export function watchOrderById(
   orderId: string,
   onData: (order: Order | null) => void,
   onError?: (error: Error) => void,
@@ -284,7 +284,18 @@ export async function watchOrderById(
         return;
       }
       const order = mapOrderDoc(docSnap.id, docSnap.data());
-      onData(order);
+      if (!order) {
+        onData(null);
+        return;
+      }
+
+      attachUserFullNames([order])
+        .then((nextOrders) => onData(nextOrders[0] ?? null))
+        .catch((error) => {
+          if (onError) {
+            onError(error as Error);
+          }
+        });
     },
     (error) => {
       if (onError) {
