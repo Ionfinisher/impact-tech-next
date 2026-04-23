@@ -249,9 +249,6 @@ export default function OrderDetailsPage() {
               <span className="font-medium">Devis requis:</span>{" "}
               {order.requiresQuotation ? "Oui" : "Non"}
             </p>
-            <p>
-              <span className="font-medium">Service ID:</span> {order.serviceId}
-            </p>
           </CardContent>
         </Card>
       </div>
