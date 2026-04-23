@@ -3,18 +3,31 @@
 import { useEffect, useState } from "react";
 import { DataTable } from "./dataTable";
 import { usePageTitleStore } from "@/store/usePageTitleStore";
-import { watchAllOrders, type Order } from "@/db/order";
+import {
+  createServiceCategory,
+  deleteServiceCategory,
+  updateServiceCategory,
+  watchAllServiceCategories,
+  type CreateServiceCategoryInput,
+  type ServiceCategory,
+} from "@/db/serviceCategory";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Page() {
   const setTitle = usePageTitleStore((state) => state.setTitle);
   const { user, loading: authLoading } = useAuth();
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [ordersLoading, setOrdersLoading] = useState(true);
-  const [ordersError, setOrdersError] = useState<string | null>(null);
+  const [serviceCategories, setServiceCategories] = useState<ServiceCategory[]>(
+    [],
+  );
+  const [serviceCategoriesLoading, setServiceCategoriesLoading] =
+    useState(true);
+  const [serviceCategoriesError, setServiceCategoriesError] = useState<
+    string | null
+  >(null);
+  const [isMutating, setIsMutating] = useState(false);
 
   useEffect(() => {
-    setTitle("Commandes");
+    setTitle("Catégories des services");
   }, [setTitle]);
 
   useEffect(() => {
@@ -23,40 +36,78 @@ export default function Page() {
     }
 
     if (!user) {
-      setOrders([]);
-      setOrdersLoading(false);
+      setServiceCategories([]);
+      setServiceCategoriesLoading(false);
       return;
     }
 
-    setOrdersLoading(true);
-    setOrdersError(null);
+    setServiceCategoriesLoading(true);
+    setServiceCategoriesError(null);
 
-    const unsubscribe = watchAllOrders(
-      (nextOrders) => {
-        setOrders(nextOrders);
-        setOrdersLoading(false);
+    const unsubscribe = watchAllServiceCategories(
+      (nextCategories) => {
+        setServiceCategories(nextCategories);
+        setServiceCategoriesLoading(false);
       },
       () => {
-        setOrdersError("Impossible de charger les commandes.");
-        setOrdersLoading(false);
+        setServiceCategoriesError("Impossible de charger les catégories.");
+        setServiceCategoriesLoading(false);
       },
     );
 
     return () => unsubscribe();
   }, [authLoading, user]);
 
+  const handleCreateCategory = async (input: CreateServiceCategoryInput) => {
+    setIsMutating(true);
+    try {
+      await createServiceCategory(input);
+    } finally {
+      setIsMutating(false);
+    }
+  };
+
+  const handleUpdateCategory = async (
+    serviceCategoryId: string,
+    input: CreateServiceCategoryInput,
+  ) => {
+    setIsMutating(true);
+    try {
+      await updateServiceCategory(serviceCategoryId, input);
+    } finally {
+      setIsMutating(false);
+    }
+  };
+
+  const handleDeleteCategory = async (serviceCategoryId: string) => {
+    setIsMutating(true);
+    try {
+      await deleteServiceCategory(serviceCategoryId);
+    } finally {
+      setIsMutating(false);
+    }
+  };
+
   return (
     <div className="flex flex-1 flex-col">
       <div className="@container/main flex flex-1 flex-col gap-2">
         <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-          {ordersError ? (
-            <div className="px-4 text-sm text-destructive">{ordersError}</div>
-          ) : authLoading || ordersLoading ? (
+          {serviceCategoriesError ? (
+            <div className="px-4 text-sm text-destructive">
+              {serviceCategoriesError}
+            </div>
+          ) : authLoading || serviceCategoriesLoading ? (
             <div className="px-4 text-sm text-muted-foreground">
-              Chargement des commandes...
+              Chargement des catégories...
             </div>
           ) : (
-            <DataTable data={orders} />
+            <DataTable
+              data={serviceCategories}
+              isMutating={isMutating}
+              onCreateAction={handleCreateCategory}
+              onUpdateAction={handleUpdateCategory}
+              onDeleteAction={handleDeleteCategory}
+            />
           )}
         </div>
       </div>

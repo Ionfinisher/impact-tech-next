@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { AppSidebar } from "@/components/AppSidebar";
 import { RouteGuard } from "@/components/RouteGuard";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Toaster } from "@/components/ui/sonner";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 const bricolage = Bricolage_Grotesque({
@@ -101,6 +102,7 @@ export default async function AppLayout({
           <SidebarInset>
             <SiteHeader />
             <TooltipProvider>{children}</TooltipProvider>
+            <Toaster richColors />
           </SidebarInset>
         </SidebarProvider>
       </TooltipProvider>
