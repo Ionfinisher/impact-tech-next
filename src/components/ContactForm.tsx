@@ -522,8 +522,6 @@ export function ContactForm() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

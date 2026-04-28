@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import {
   IconBriefcase,
   IconDashboard,
@@ -31,7 +32,7 @@ import { UserSkeleton } from "@/components/UserSkeleton";
 const data = {
   navMain: [
     {
-      title: "Dashboard",
+      title: "Tableau de bord",
       url: "/app",
       icon: IconDashboard,
       isActive: true,
@@ -62,18 +63,17 @@ const data = {
       icon: IconMessage,
     },
     {
-      title: "Blog",
-      url: "#",
+      title: "Catégories de blog",
+      url: "/app/blog/categories",
       icon: IconFolder,
     },
-  ],
-  navSecondary: [
     {
-      title: "Settings",
-      url: "/app/settings",
-      icon: IconSettings,
+      title: "Blog",
+      url: "/app/blog",
+      icon: IconBriefcase,
     },
   ],
+  navSecondary: [],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -89,8 +89,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
               <a href="#">
-                <IconInnerShadowTop className="size-5!" />
-                <span className="text-base font-semibold">SocialSync</span>
+                <Image
+                  src="/images/LOGO-IMPACT-TECH.png"
+                  alt="Logo"
+                  width={32}
+                  height={32}
+                  className="mr-2"
+                />
+                <span className="text-base font-semibold">
+                  Impact Tech Admin
+                </span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

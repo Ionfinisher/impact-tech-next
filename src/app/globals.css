@@ -157,3 +157,171 @@ body {
     @apply font-sans;
   }
 }
+
+@layer components {
+  .ProseMirror,
+  .blog-rich-content {
+    color: var(--foreground);
+    line-height: 1.75;
+    text-wrap: pretty;
+  }
+
+  .ProseMirror:focus {
+    outline: none;
+  }
+
+  .ProseMirror > :first-child,
+  .blog-rich-content > :first-child {
+    margin-top: 0;
+  }
+
+  .ProseMirror > :last-child,
+  .blog-rich-content > :last-child {
+    margin-bottom: 0;
+  }
+
+  .ProseMirror :where(h1, h2, h3, h4),
+  .blog-rich-content :where(h1, h2, h3, h4) {
+    color: var(--foreground);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-top: 2.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .ProseMirror h1,
+  .blog-rich-content h1 {
+    font-size: clamp(2rem, 2.8vw, 2.6rem);
+  }
+
+  .ProseMirror h2,
+  .blog-rich-content h2 {
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+  }
+
+  .ProseMirror h3,
+  .blog-rich-content h3 {
+    font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  }
+
+  .ProseMirror h4,
+  .blog-rich-content h4 {
+    font-size: 1.1rem;
+  }
+
+  .ProseMirror :where(p, ul, ol, pre, blockquote, figure),
+  .blog-rich-content :where(p, ul, ol, pre, blockquote, figure) {
+    margin-top: 0.95rem;
+    margin-bottom: 0.95rem;
+  }
+
+  .ProseMirror :where(ul, ol),
+  .blog-rich-content :where(ul, ol) {
+    padding-left: 1.3rem;
+  }
+
+  .ProseMirror ul,
+  .blog-rich-content ul {
+    list-style: disc;
+  }
+
+  .ProseMirror ol,
+  .blog-rich-content ol {
+    list-style: decimal;
+  }
+
+  .ProseMirror :where(li + li),
+  .blog-rich-content :where(li + li) {
+    margin-top: 0.35rem;
+  }
+
+  .ProseMirror blockquote,
+  .blog-rich-content blockquote {
+    border-left: 3px solid color-mix(in oklab, var(--primary) 42%, transparent);
+    color: color-mix(in oklab, var(--foreground) 78%, var(--muted-foreground));
+    font-style: italic;
+    padding-left: 1rem;
+  }
+
+  .ProseMirror :where(code):not(pre code),
+  .blog-rich-content :where(code):not(pre code) {
+    background: color-mix(in oklab, var(--muted) 82%, transparent);
+    border: 1px solid color-mix(in oklab, var(--border) 82%, transparent);
+    border-radius: 0.4rem;
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      Liberation Mono,
+      Courier New,
+      monospace;
+    font-size: 0.88em;
+    padding: 0.12rem 0.38rem;
+  }
+
+  .ProseMirror pre,
+  .blog-rich-content pre {
+    background: color-mix(in oklab, var(--foreground) 10%, var(--background));
+    border: 1px solid color-mix(in oklab, var(--border) 86%, transparent);
+    border-radius: 0.75rem;
+    overflow-x: auto;
+    padding: 0.9rem 1rem;
+  }
+
+  .ProseMirror pre code,
+  .blog-rich-content pre code {
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+
+  .ProseMirror a,
+  .blog-rich-content a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.17em;
+  }
+
+  .ProseMirror :where(img, video),
+  .blog-rich-content :where(img, video) {
+    border-radius: var(--radius-md);
+    display: block;
+    height: auto;
+    margin: 1.4rem auto;
+    max-width: 100%;
+  }
+
+  .ProseMirror hr,
+  .blog-rich-content hr {
+    border: 0;
+    border-top: 1px solid color-mix(in oklab, var(--border) 82%, transparent);
+    margin: 2rem 0;
+  }
+
+  .ProseMirror table,
+  .blog-rich-content table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 1.2rem 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .ProseMirror :where(th, td),
+  .blog-rich-content :where(th, td) {
+    border: 1px solid color-mix(in oklab, var(--border) 82%, transparent);
+    padding: 0.55rem 0.7rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .ProseMirror th,
+  .blog-rich-content th {
+    background: color-mix(in oklab, var(--muted) 74%, transparent);
+    font-weight: 600;
+  }
+}

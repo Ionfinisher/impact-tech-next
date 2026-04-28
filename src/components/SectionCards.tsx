@@ -1,5 +1,10 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
 import { IconTrendingDown, IconTrendingUp } from "@tabler/icons-react";
 
+import { watchAllOrders, type Order } from "@/db/order";
+import { watchAllUsers, type UserDocument } from "@/db/users";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -10,91 +15,179 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+function isTerminatedOrder(order: Order): boolean {
+  return (
+    order.status === "completed" || (order.status as string) === "terminated"
+  );
+}
+
+function formatCurrency(value: number): string {
+  return `${new Intl.NumberFormat("fr-FR").format(value)} FCFA`;
+}
+
 export function SectionCards() {
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [users, setUsers] = useState<UserDocument[]>([]);
+  const [ordersLoading, setOrdersLoading] = useState(true);
+  const [usersLoading, setUsersLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = watchAllOrders(
+      (nextOrders) => {
+        setOrders(nextOrders);
+        setOrdersLoading(false);
+      },
+      () => {
+        setOrders([]);
+        setOrdersLoading(false);
+      },
+    );
+
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = watchAllUsers(
+      (nextUsers) => {
+        setUsers(nextUsers);
+        setUsersLoading(false);
+      },
+      () => {
+        setUsers([]);
+        setUsersLoading(false);
+      },
+    );
+
+    return () => unsubscribe();
+  }, []);
+
+  const metrics = useMemo(() => {
+    const terminatedOrders = orders.filter((order) => isTerminatedOrder(order));
+    const revenueTotal = terminatedOrders.reduce((sum, order) => {
+      return (
+        sum + (typeof order.totalPrice === "number" ? order.totalPrice : 0)
+      );
+    }, 0);
+
+    const pendingOrders = orders.filter(
+      (order) => order.status === "pending",
+    ).length;
+
+    const now = new Date();
+    const threeMonthsAgo = new Date(now);
+    threeMonthsAgo.setMonth(now.getMonth() - 3);
+
+    const newUsersLast3Months = users.filter((user) => {
+      if (!user.createdAt) {
+        return false;
+      }
+
+      const createdAt = new Date(user.createdAt);
+      return !Number.isNaN(createdAt.getTime()) && createdAt >= threeMonthsAgo;
+    }).length;
+
+    const growthRate =
+      orders.length === 0 ? 0 : (terminatedOrders.length / orders.length) * 100;
+
+    return {
+      growthRate,
+      newUsersLast3Months,
+      pendingOrders,
+      revenueTotal,
+      terminatedOrdersCount: terminatedOrders.length,
+      totalOrdersCount: orders.length,
+    };
+  }, [orders, users]);
+
+  const isLoading = ordersLoading || usersLoading;
+
   return (
     <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-linear-to-t *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Total Revenue</CardDescription>
+          <CardDescription>Revenue total</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            $1,250.00
+            {isLoading ? "..." : formatCurrency(metrics.revenueTotal)}
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
               <IconTrendingUp />
-              +12.5%
+              {isLoading ? "..." : `${metrics.terminatedOrdersCount} terminées`}
             </Badge>
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
-            Trending up this month <IconTrendingUp className="size-4" />
+            Somme des commandes terminées <IconTrendingUp className="size-4" />
           </div>
           <div className="text-muted-foreground">
-            Visitors for the last 6 months
+            Basé sur le statut terminé
           </div>
         </CardFooter>
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>New Customers</CardDescription>
+          <CardDescription>Nouveaux utilisateurs</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            1,234
+            {isLoading ? "..." : metrics.newUsersLast3Months}
+          </CardTitle>
+          <CardAction>
+            <Badge variant="outline">
+              <IconTrendingUp />3 derniers mois
+            </Badge>
+          </CardAction>
+        </CardHeader>
+        <CardFooter className="flex-col items-start gap-1.5 text-sm">
+          <div className="line-clamp-1 flex gap-2 font-medium">
+            Comptes créés récemment <IconTrendingUp className="size-4" />
+          </div>
+          <div className="text-muted-foreground">
+            Fenêtre glissante sur 90 jours
+          </div>
+        </CardFooter>
+      </Card>
+      <Card className="@container/card">
+        <CardHeader>
+          <CardDescription>Commandes en attentes</CardDescription>
+          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+            {isLoading ? "..." : metrics.pendingOrders}
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
               <IconTrendingDown />
-              -20%
+              statut pending
             </Badge>
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
-            Down 20% this period <IconTrendingDown className="size-4" />
+            Commandes à traiter <IconTrendingDown className="size-4" />
+          </div>
+          <div className="text-muted-foreground">Nombre actuel en attente</div>
+        </CardFooter>
+      </Card>
+      <Card className="@container/card">
+        <CardHeader>
+          <CardDescription>Taux de croissance</CardDescription>
+          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+            {isLoading ? "..." : `${metrics.growthRate.toFixed(1)}%`}
+          </CardTitle>
+          <CardAction>
+            <Badge variant="outline">
+              <IconTrendingUp />
+              {isLoading
+                ? "..."
+                : `${metrics.terminatedOrdersCount}/${metrics.totalOrdersCount}`}
+            </Badge>
+          </CardAction>
+        </CardHeader>
+        <CardFooter className="flex-col items-start gap-1.5 text-sm">
+          <div className="line-clamp-1 flex gap-2 font-medium">
+            Ratio des commandes terminées <IconTrendingUp className="size-4" />
           </div>
           <div className="text-muted-foreground">
-            Acquisition needs attention
+            Sur l'ensemble des commandes
           </div>
-        </CardFooter>
-      </Card>
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Active Accounts</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            45,678
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <IconTrendingUp />
-              +12.5%
-            </Badge>
-          </CardAction>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Strong user retention <IconTrendingUp className="size-4" />
-          </div>
-          <div className="text-muted-foreground">Engagement exceed targets</div>
-        </CardFooter>
-      </Card>
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Growth Rate</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            4.5%
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <IconTrendingUp />
-              +4.5%
-            </Badge>
-          </CardAction>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Steady performance increase <IconTrendingUp className="size-4" />
-          </div>
-          <div className="text-muted-foreground">Meets growth projections</div>
         </CardFooter>
       </Card>
     </div>
