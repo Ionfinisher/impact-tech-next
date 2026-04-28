@@ -209,13 +209,15 @@ export async function listAllBlogPosts(): Promise<BlogPost[]> {
     .filter((post): post is BlogPost => post !== null);
 }
 
-export async function listPublishedBlogPosts(): Promise<BlogPost[]> {
+export async function listPublishedBlogPosts(
+  max: number | null,
+): Promise<BlogPost[]> {
   const blogPostsCollection = getBlogPostsCollection();
   const blogPostQuery = query(
     blogPostsCollection,
     where("status", "==", "published"),
     orderBy("publishedAt", "desc"),
-    limit(300),
+    ...(max ? [limit(max)] : [limit(300)]),
   );
 
   const snapshot = await getDocs(blogPostQuery);

@@ -27,13 +27,12 @@ export default function NewsPage() {
   useEffect(() => {
     const loadPosts = async () => {
       try {
-        const publishedPosts = await listPublishedBlogPosts();
+        const publishedPosts = await listPublishedBlogPosts(null);
         setPosts(publishedPosts);
       } finally {
         setLoading(false);
       }
     };
-
     loadPosts();
   }, []);
 

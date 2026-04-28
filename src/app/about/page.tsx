@@ -71,10 +71,6 @@ export default function About() {
                 </Link>
               </div>
             </div>
-
-            <div>
-              <Carousel />
-            </div>
           </div>
         </div>
       </main>

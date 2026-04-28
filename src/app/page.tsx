@@ -18,6 +18,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ServiceCard } from "@/components/ServiceCard";
 import { AnimatedText } from "@/components/AnimatedText";
+import { LastArticles } from "@/components/LastArticles";
 
 export default function Home() {
   return (
@@ -254,121 +255,8 @@ export default function Home() {
                 Les dernières actualités
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-background-light dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col group">
-                <div className="overflow-hidden">
-                  <Image
-                    width={300}
-                    height={200}
-                    alt="An architect in a yellow hard hat reviewing blueprints on a construction site"
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuALxB6F1UJevbC4hxRpF91J7uTOqZOt4IJQdblX2HUsQcTvzFOKq5HmM-GaAIZU6YLst5T9TNCu3_44bZi7nJkTwCjXQewx8QhP5sT8uTN-_Bqc6o1H_S0fmPAdyirqsKBBREnAj7aCW9nwHw3BR2dFe_KHOFuy8St4f9bBbIw5qX4YqaiVIcaYTkazs_rPO2rBbo305Cfjwk4-slvyIsy6CGmTDSn79tW-DC1IhvTDBp8zkP8AEM8R75soz16Gq1kuXZvo_Pb336Y"
-                  />
-                </div>
-                <div className="p-6 flex flex-col grow">
-                  <h3 className="text-xl font-bold text-blue-950 dark:text-white group-hover:text-primary transition-colors">
-                    Service Architecture
-                  </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                    18 mars 2025 / Aucun commentaire
-                  </p>
-                  <p className="mt-4 text-gray-600 dark:text-gray-300 grow">
-                    Savez-vous qu'un être humain passe en moyenne 5/6 de son
-                    temps dans un bâtiment? Le bâtiment est notre espace de vie
-                    quotidien...
-                  </p>
-                  <Link
-                    className="inline-flex items-center justify-center gap-2 mt-6 px-6 py-2 bg-blue-950 text-white rounded-full text-center font-medium hover:bg-primary hover:text-[#c2a356] transition-colors w-full sm:w-auto"
-                    href="#"
-                  >
-                    <span>Lire plus</span>
-                    <ArrowRight
-                      size={32}
-                      weight="duotone"
-                      className="text-white hover:text-[#c2a356]"
-                    />
-                  </Link>
-                </div>
-              </div>
-              <div className="bg-background-light dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col group">
-                <div className="overflow-hidden">
-                  <Image
-                    width={300}
-                    height={200}
-                    alt="A software engineer working on a computer in a dark room"
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT2qthi9GGcFvpDG_9bMi8FmtmCuusOhVQ8MuU0yCmwTJnbc65Oj3HIQD4oJ2uVi8hdDE_m4XTtgkYHa9AU47QpebvYIhJ2my87450CO_WCWK93nGm8x8OZ7zDqtx4q-jXQm5VEBP_SNwt_dQuMt8eU1teHN3cOP4skSrZcP7B6cOOJoN0NpJrp46CPuN26eXVWkrWw5qjO5mB-DQImnEVH_o0OsURyMwfor1elBSRZ5ruBRqqZDHCmEZmbFaRu1vccBbQIDkQA4g"
-                  />
-                </div>
-                <div className="p-6 flex flex-col grow">
-                  <h3 className="text-xl font-bold text-blue-950 dark:text-white group-hover:text-primary transition-colors">
-                    Service Technologie
-                  </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                    23 février 2025 / Aucun commentaire
-                  </p>
-                  <p className="mt-4 text-gray-600 dark:text-gray-300 grow">
-                    Notre service technologie propose une gamme complète de
-                    solutions adaptées aux besoins des entreprises et des
-                    particuliers. Nous offrons...
-                  </p>
-                  <Link
-                    className="inline-flex items-center justify-center gap-2 mt-6 px-6 py-2 bg-blue-950 text-white rounded-full text-center font-medium hover:bg-primary hover:text-[#c2a356] transition-colors w-full sm:w-auto"
-                    href="#"
-                  >
-                    <span>Lire plus</span>
-                    <ArrowRight
-                      size={32}
-                      weight="duotone"
-                      className="text-white hover:text-[#c2a356]"
-                    />
-                  </Link>
-                </div>
-              </div>
-              <div className="bg-background-light dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col group">
-                <div className="overflow-hidden">
-                  <Image
-                    width={300}
-                    height={200}
-                    alt="An electrician working on a complex electrical panel"
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVgUiurGUhmSMpAp05vAl0KzCYsc7_-0drXXVjtsuAJlty7WYSCrzIFUeYenN9BepcJ1UQ9UrDfFao49Uzj7eFr_0obvAfH5UmgTyWSmpN9CdyZ7XFCC2TuG4_xwxTSsHrDEi5fFgJxEjjK5IDYxXSvsdYrPitQG5MjENFqp54r3ZHJGLLxcyUq1WtzgFbEujrVElnp-P7FGR7FxKnAx7NLk-FGlK60ohfwqc5W-hism5OWuI49KWAY5hdumAAWTGQNtZpc_WVwUI"
-                  />
-                </div>
-                <div className="p-6 flex flex-col grow">
-                  <h3 className="text-xl font-bold text-blue-950 dark:text-white group-hover:text-primary transition-colors">
-                    Service Électricité
-                  </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                    23 février 2025 / Aucun commentaire
-                  </p>
-                  <p className="mt-4 text-gray-600 dark:text-gray-300 grow">
-                    Notre service d'électricité propose une gamme complète de
-                    solutions adaptées aux besoins des particuliers, incluant
-                    l'installation, l'élaboration de plans électriques, la...
-                  </p>
-                  <Link
-                    className="inline-flex items-center justify-center gap-2 mt-6 px-6 py-2 bg-blue-950 text-white rounded-full text-center font-medium  hover:text-[#c2a356] transition-colors w-full sm:w-auto"
-                    href="#"
-                  >
-                    <span>Lire plus</span>
-                    <ArrowRight
-                      size={32}
-                      weight="duotone"
-                      className="text-white hover:text-[#c2a356]"
-                    />
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="text-center mt-12">
-              <Link
-                className="font-medium text-blue-950 dark:text-gray-200 hover:text-primary dark:hover:text-primary border-b-2 border-transparent hover:border-[#0d1b33] pb-1 transition-all"
-                href="#"
-              >
-                Voir plus d'actualités
-              </Link>
-            </div>
+            {/* Last 3 articles */}
+            <LastArticles />
           </div>
         </section>
         <section className="py-16 md:py-24 bg-[#f7f7f7] dark:bg-gray-900">
