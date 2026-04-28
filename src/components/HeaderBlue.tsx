@@ -46,6 +46,13 @@ export function HeaderBlue({ activeLink = "home" }: HeaderProps) {
     } origin-center transition-transform ${!isActive && "duration-300"}`;
   };
 
+  const getMobileLinkClasses = (link: string) => {
+    const isActive = activeLink === link;
+    return `flex items-center px-2 py-2.5 rounded-lg transition-colors ${
+      isActive ? "bg-primary/20 text-primary" : "text-white hover:bg-gray-800"
+    }`;
+  };
+
   return (
     <header className="absolute top-0 left-0 right-0 z-50 py-6 bg-blue-950 backdrop-blur-md">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -131,7 +138,7 @@ export function HeaderBlue({ activeLink = "home" }: HeaderProps) {
                 <Link
                   href="/"
                   onClick={closeMobileMenu}
-                  className="flex items-center px-2 py-2.5 rounded-lg transition-colors text-white hover:bg-gray-800"
+                  className={getMobileLinkClasses("home")}
                 >
                   <span>Accueil</span>
                 </Link>
@@ -140,7 +147,7 @@ export function HeaderBlue({ activeLink = "home" }: HeaderProps) {
                 <Link
                   href="/about"
                   onClick={closeMobileMenu}
-                  className="flex items-center px-2 py-2.5 rounded-lg transition-colors bg-primary/20 text-primary"
+                  className={getMobileLinkClasses("about")}
                 >
                   <span>A Propos</span>
                 </Link>
@@ -149,7 +156,7 @@ export function HeaderBlue({ activeLink = "home" }: HeaderProps) {
                 <Link
                   href="/services"
                   onClick={closeMobileMenu}
-                  className="flex items-center px-2 py-2.5 rounded-lg transition-colors text-white hover:bg-gray-800"
+                  className={getMobileLinkClasses("services")}
                 >
                   <span>Services</span>
                 </Link>
@@ -158,7 +165,7 @@ export function HeaderBlue({ activeLink = "home" }: HeaderProps) {
                 <Link
                   href="/news"
                   onClick={closeMobileMenu}
-                  className="flex items-center px-2 py-2.5 rounded-lg transition-colors text-white hover:bg-gray-800"
+                  className={getMobileLinkClasses("news")}
                 >
                   <span>Actualités</span>
                 </Link>
@@ -167,7 +174,7 @@ export function HeaderBlue({ activeLink = "home" }: HeaderProps) {
                 <Link
                   href="/contact"
                   onClick={closeMobileMenu}
-                  className="flex items-center px-2 py-2.5 rounded-lg transition-colors text-white hover:bg-gray-800"
+                  className={getMobileLinkClasses("contact")}
                 >
                   <span>Contact</span>
                 </Link>
