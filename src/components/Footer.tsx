@@ -115,7 +115,7 @@ export function Footer() {
                 <li>
                   <Link
                     className="text-gray-300 hover:text-[#c2a356] transition-colors"
-                    href="/#news"
+                    href="/news"
                   >
                     Actualités
                   </Link>
@@ -123,7 +123,7 @@ export function Footer() {
                 <li>
                   <Link
                     className="text-gray-300 hover:text-[#c2a356] transition-colors"
-                    href="#contact"
+                    href="/contact"
                   >
                     Contact
                   </Link>
