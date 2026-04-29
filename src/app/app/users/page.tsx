@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { watchAllUsers, type UserDocument } from "@/db/users";
 import { usePageTitleStore } from "@/store/usePageTitleStore";
 import { DataTable } from "./dataTable";
+import { TableSkeleton } from "@/components/TableSkeleton";
 
 export default function UsersPage() {
   const setTitle = usePageTitleStore((state) => state.setTitle);
