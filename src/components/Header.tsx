@@ -86,7 +86,7 @@ export function Header({ activeLink = "home" }: HeaderProps) {
               <span>Services</span>
               <span className={getUnderlineClasses("services")}></span>
             </Link>
-            <Link className={getLinkClasses("news")} href="#news">
+            <Link className={getLinkClasses("news")} href="/news">
               <span>Actualités</span>
               <span className={getUnderlineClasses("news")}></span>
             </Link>
@@ -183,7 +183,7 @@ export function Header({ activeLink = "home" }: HeaderProps) {
               </li>
               <li>
                 <Link
-                  href="#news"
+                  href="/news"
                   onClick={closeMobileMenu}
                   className={`flex items-center px-2 py-2.5 rounded-lg transition-colors ${
                     activeLink === "news"
@@ -196,7 +196,7 @@ export function Header({ activeLink = "home" }: HeaderProps) {
               </li>
               <li>
                 <Link
-                  href="#contact"
+                  href="/contact"
                   onClick={closeMobileMenu}
                   className={`flex items-center px-2 py-2.5 rounded-lg transition-colors ${
                     activeLink === "contact"
