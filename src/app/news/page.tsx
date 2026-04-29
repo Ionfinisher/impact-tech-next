@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select";
 import { HeaderBlue } from "@/components/HeaderBlue";
 import { Footer } from "@/components/Footer";
+import { NewsSkeleton } from "@/components/NewsSkeleton";
 
 export default function NewsPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -63,8 +64,19 @@ export default function NewsPage() {
 
   if (loading) {
     return (
-      <div className="flex flex-1 items-center justify-center py-12">
-        <div className="text-muted-foreground">Chargement des articles...</div>
+      <div
+        className="bg-background-light dark:bg-background-dark text-blue-950 dark:text-gray-200"
+        id="head"
+      >
+        <HeaderBlue activeLink="news" />
+        <main className="pt-32 pb-20">
+          <div className="flex flex-1 flex-col">
+            <div className="flex flex-1 flex-col gap-6 p-4 md:p-8">
+              <NewsSkeleton />
+            </div>
+          </div>
+        </main>
+        <Footer />
       </div>
     );
   }

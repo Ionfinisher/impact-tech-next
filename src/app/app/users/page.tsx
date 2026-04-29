@@ -53,9 +53,7 @@ export default function UsersPage() {
           {usersError ? (
             <div className="px-4 text-sm text-destructive">{usersError}</div>
           ) : authLoading || usersLoading ? (
-            <div className="px-4 text-sm text-muted-foreground">
-              Chargement des utilisateurs...
-            </div>
+            <TableSkeleton />
           ) : (
             <DataTable data={users} />
           )}

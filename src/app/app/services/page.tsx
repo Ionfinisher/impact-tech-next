@@ -7,6 +7,7 @@ import { watchAllServiceCategories } from "@/db/serviceCategory";
 import { useAuth } from "@/hooks/useAuth";
 import { usePageTitleStore } from "@/store/usePageTitleStore";
 import { DataTable } from "./dataTable";
+import { TableSkeleton } from "@/components/TableSkeleton";
 
 export default function ServicesPage() {
   const setTitle = usePageTitleStore((state) => state.setTitle);
@@ -90,9 +91,7 @@ export default function ServicesPage() {
           {servicesError ? (
             <div className="px-4 text-sm text-destructive">{servicesError}</div>
           ) : authLoading || servicesLoading ? (
-            <div className="px-4 text-sm text-muted-foreground">
-              Chargement des services...
-            </div>
+            <TableSkeleton />
           ) : (
             <DataTable
               categoryNameById={categoryNameById}

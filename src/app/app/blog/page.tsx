@@ -13,6 +13,7 @@ import { usePageTitleStore } from "@/store/usePageTitleStore";
 import { Button } from "@/components/ui/button";
 import { IconPlus } from "@tabler/icons-react";
 import { BlogPostDataTable } from "./dataTable";
+import { TableSkeleton } from "@/components/TableSkeleton";
 
 export default function BlogPage() {
   const setTitle = usePageTitleStore((state) => state.setTitle);
@@ -81,9 +82,7 @@ export default function BlogPage() {
             </Link>
           </div>
           {authLoading || postsLoading ? (
-            <div className="px-4 text-sm text-muted-foreground lg:px-6">
-              Chargement des articles...
-            </div>
+            <TableSkeleton />
           ) : (
             <div className="px-4 lg:px-6">
               <BlogPostDataTable

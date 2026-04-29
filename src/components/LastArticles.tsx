@@ -6,6 +6,7 @@ import { watchAllBlogCategories, type BlogCategory } from "@/db/blogCategory";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import Link from "next/link";
 import Image from "next/image";
+import { NewsSkeleton } from "@/components/NewsSkeleton";
 
 export function LastArticles() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -54,7 +55,7 @@ export function LastArticles() {
   if (loading) {
     return (
       <div className="flex flex-1 items-center justify-center py-12">
-        <div className="text-muted-foreground">Chargement des articles...</div>
+        <NewsSkeleton />
       </div>
     );
   }

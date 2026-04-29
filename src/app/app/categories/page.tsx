@@ -12,6 +12,7 @@ import {
   type ServiceCategory,
 } from "@/db/serviceCategory";
 import { useAuth } from "@/hooks/useAuth";
+import { TableSkeleton } from "@/components/TableSkeleton";
 
 export default function Page() {
   const setTitle = usePageTitleStore((state) => state.setTitle);
@@ -97,9 +98,7 @@ export default function Page() {
               {serviceCategoriesError}
             </div>
           ) : authLoading || serviceCategoriesLoading ? (
-            <div className="px-4 text-sm text-muted-foreground">
-              Chargement des catégories...
-            </div>
+            <TableSkeleton />
           ) : (
             <DataTable
               data={serviceCategories}

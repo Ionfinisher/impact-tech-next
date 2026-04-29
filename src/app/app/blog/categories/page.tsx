@@ -25,6 +25,7 @@ import {
   type BlogCategory,
 } from "@/db/blogCategory";
 import { useAuth } from "@/hooks/useAuth";
+import { TableSkeleton } from "@/components/TableSkeleton";
 
 export default function BlogCategoriesPage() {
   const setTitle = usePageTitleStore((state) => state.setTitle);
@@ -198,9 +199,7 @@ export default function BlogCategoriesPage() {
             {error}
           </div>
         ) : authLoading || loading ? (
-          <div className="text-sm text-muted-foreground">
-            Chargement des catégories...
-          </div>
+          <TableSkeleton />
         ) : (
           <>
             {mode && (

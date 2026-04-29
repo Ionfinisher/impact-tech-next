@@ -5,6 +5,7 @@ import { DataTable } from "./dataTable";
 import { usePageTitleStore } from "@/store/usePageTitleStore";
 import { watchAllOrders, type Order } from "@/db/order";
 import { useAuth } from "@/hooks/useAuth";
+import { TableSkeleton } from "@/components/TableSkeleton";
 
 export default function Page() {
   const setTitle = usePageTitleStore((state) => state.setTitle);
@@ -52,9 +53,7 @@ export default function Page() {
           {ordersError ? (
             <div className="px-4 text-sm text-destructive">{ordersError}</div>
           ) : authLoading || ordersLoading ? (
-            <div className="px-4 text-sm text-muted-foreground">
-              Chargement des commandes...
-            </div>
+            <TableSkeleton />
           ) : (
             <DataTable data={orders} />
           )}
