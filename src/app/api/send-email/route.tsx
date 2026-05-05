@@ -114,7 +114,7 @@ export async function POST(request: Request) {
         process.env.SMTP_FROM ||
         "noreply@impacttechafrica.com",
       to: to || "contact@impacttechafrica.com",
-      subject: `Contact de: ${subject}`,
+      subject: `Contact depuis le site web - ${subject}`,
       html: htmlContent,
       replyTo: email,
     });
