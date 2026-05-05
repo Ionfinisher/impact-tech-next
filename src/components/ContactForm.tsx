@@ -46,10 +46,28 @@ export function ContactForm() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
-    // Replace with your actual API endpoint
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: "contact@impacttechafrica.com",
+          subject: formData.subject,
+          fullname: formData.name,
+          email: formData.email || "Aucun email fourni",
+          phone: formData.phone || "Aucun téléphone fourni",
+          message: formData.message,
+        }),
+      });
+
+      if (response.status === 400) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Invalid input");
+      }
+
+      if (response.status === 500) {
+        throw new Error("Server error");
+      }
 
       setSubmitStatus({
         type: "success",
@@ -65,6 +83,7 @@ export function ContactForm() {
         message: "",
       });
     } catch (error) {
+      console.error("Error sending email:", error);
       setSubmitStatus({
         type: "error",
         message: "Une erreur est survenue. Veuillez réessayer.",
