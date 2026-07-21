@@ -18,7 +18,7 @@ export function VideoPlayButton() {
           setIsPlaying(false);
         }
       }}
-      className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300"
+      className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300 cursor-pointer"
     >
       {isPlaying ? (
         <Pause size={24} weight="duotone" />

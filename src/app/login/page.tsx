@@ -25,7 +25,7 @@ export default function Login() {
           <div className="text-center sm:text-left mb-8">
             {/* You can use an Image component for a logo */}
             {/* <Image src="/logo.png" alt="App Logo" width={150} height={50} className="mx-auto mb-2 sm:mx-0" /> */}
-            <h1 className="text-4xl font-bold text-white">Impact Tech</h1>
+            <h1 className="text-4xl font-bold text-white">Impact Techs</h1>
             <p className="text-gray-200">Administration</p>
           </div>
           <LoginForm />

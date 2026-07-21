@@ -20,7 +20,7 @@ export function Footer() {
                 <Image
                   width={100}
                   height={100}
-                  alt="Impact Tech logo"
+                  alt="Impact Techs logo"
                   className="h-10 w-auto"
                   src="/images/LOGO-IMPACT-TECH.png"
                 />
@@ -160,7 +160,7 @@ export function Footer() {
           </div>
 
           <div className="border-t border-gray-700 py-6 text-center text-sm text-gray-400">
-            <p>© 2025 Impact Tech. Tous droits réservés.</p>
+            <p>© 2025 Impact Techs. Tous droits réservés.</p>
           </div>
         </div>
 

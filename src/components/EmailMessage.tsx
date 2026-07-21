@@ -63,7 +63,7 @@ export function EmailMessage({
         <Body className="bg-white font-sans">
           <Container className="mx-auto py-12 px-4 max-w-xl">
             {/* Logo/Brand area */}
-            <Text className="text-2xl font-bold text-black">Impact Tech</Text>
+            <Text className="text-2xl font-bold text-black">Impact Techs</Text>
 
             {/* Main heading */}
             <Heading className="text-2xl font-bold text-gray-900 mt-8">
@@ -88,7 +88,7 @@ export function EmailMessage({
 
             {/* Footer */}
             <Text className="text-sm text-gray-500">
-              Impact Tech - Connecter les particuliers et les entreprises aux
+              Impact Techs - Connecter les particuliers et les entreprises aux
               meilleurs prestataires dans les domaines du bâtiment, de
               l'architecture, de l'électricité et de la technologie.
             </Text>

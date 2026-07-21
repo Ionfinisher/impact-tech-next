@@ -16,13 +16,13 @@ export default function About() {
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            À propos d'Impact Tech
+            À propos d'Impact Techs
           </h1>
 
           <div className="grid md:grid-cols-2 gap-10 items-start">
             <div>
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-                Impact Tech connecte des particuliers et des entreprises aux
+                Impact Techs connecte des particuliers et des entreprises aux
                 meilleurs prestataires dans les domaines du bâtiment &
                 construction, de l&#8217;architecture, de l&#8217;électricité et
                 de la technologie. Notre mission est de simplifier la

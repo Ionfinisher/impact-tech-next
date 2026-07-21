@@ -55,7 +55,7 @@ export default function Home() {
             </div>
             <div className="relative flex justify-center">
               <Image
-                alt="Impact Tech mobile app mockup"
+                alt="Impact Techs mobile app mockup"
                 className="w-full max-w-xs md:max-w-xs lg:max-w-xs"
                 src="/images/iphone-app-mockup.png"
                 width={720}
@@ -151,7 +151,7 @@ export default function Home() {
                 </p>
               </div>
               <div>
-                <div className="aspect-video bg-blue-950 dark:bg-black rounded-xl overflow-hidden shadow-2xl relative group cursor-pointer">
+                <div className="aspect-video bg-blue-950 dark:bg-black rounded-xl overflow-hidden shadow-2xl relative group">
                   <video id="video">
                     <source src="/videos/main-video.mp4" type="video/mp4" />
                     Your browser does not support the video tag.

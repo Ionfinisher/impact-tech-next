@@ -19,15 +19,15 @@ export default function PolitiqueConfidentialite() {
           </h1>
 
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-8">
-            Dernière mise à jour : 06 Janvier 2026
+            Dernière mise à jour : 21 Juillet 2026
           </p>
 
           <div className="prose prose-lg dark:prose-invert max-w-none space-y-8">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Bienvenue sur Impact Tech, une application conçue pour connecter
+              Bienvenue sur Impact Techs, une application conçue pour connecter
               les utilisateurs avec des prestataires de services professionnels
               dans les domaines du bâtiment, de l'architecture, de l'électricité
-              et de la technologie. Chez Impact Tech, nous nous engageons à
+              et de la technologie. Chez Impact Techs, nous nous engageons à
               protéger votre vie privée et à assurer la sécurité de vos
               informations personnelles. Cette Politique de Confidentialité
               décrit comment nous collectons, utilisons, divulguons et
@@ -43,7 +43,7 @@ export default function PolitiqueConfidentialite() {
                 1.1 Informations personnelles
               </h3>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                Lorsque vous créez un compte Impact Tech ou utilisez nos
+                Lorsque vous créez un compte Impact Techs ou utilisez nos
                 services, nous pouvons collecter les informations personnelles
                 suivantes :
               </p>
@@ -240,7 +240,7 @@ export default function PolitiqueConfidentialite() {
                 7. Cookies et technologies similaires
               </h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Impact Tech utilise des cookies et des technologies similaires
+                Impact Techs utilise des cookies et des technologies similaires
                 pour améliorer votre expérience, analyser l'utilisation de
                 l'application et personnaliser le contenu. Vous pouvez gérer vos
                 préférences en matière de cookies via les paramètres de votre
@@ -273,7 +273,7 @@ export default function PolitiqueConfidentialite() {
               </p>
               <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
                 <p className="font-semibold text-gray-900 dark:text-white mb-2">
-                  Impact Tech
+                  Impact Techs
                 </p>
                 <p className="text-gray-700 dark:text-gray-300">
                   Email :{" "}
@@ -296,7 +296,7 @@ export default function PolitiqueConfidentialite() {
 
             <div className="mt-12 p-6 bg-primary/10 rounded-lg border-l-4 border-primary">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                En utilisant Impact Tech, vous acceptez les conditions décrites
+                En utilisant Impact Techs, vous acceptez les conditions décrites
                 dans cette Politique de Confidentialité. Si vous n'êtes pas
                 d'accord avec cette politique, veuillez ne pas utiliser notre
                 application.

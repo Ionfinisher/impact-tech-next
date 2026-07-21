@@ -18,7 +18,7 @@ const bricolage = Bricolage_Grotesque({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.impacttechfrica.com/admin"),
   title: {
-    default: "Impact Tech",
+    default: "Impact Techs",
     template: "%s | Impact Tech",
   },
   icons: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     },
   ],
   description:
-    "Simplifiez vos projets de construction, d'architecture, d'électricité et du numérique avec Impact Tech ✅.",
+    "Simplifiez vos projets de construction, d'architecture, d'électricité et du numérique avec Impact Techs.",
   keywords: [
     "architecture",
     "BTC",
@@ -51,10 +51,10 @@ export const metadata: Metadata = {
     "logiciel",
   ],
   openGraph: {
-    title: "Impact Tech",
-    description: "Impact Tech Management App",
+    title: "Impact Techs",
+    description: "Impact Techs Management App",
     url: "https://www.impacttechfrica.com.com/app",
-    siteName: "Impact Tech - App",
+    siteName: "Impact Techs - App",
     images: [
       {
         url: "/images/og_image.png",

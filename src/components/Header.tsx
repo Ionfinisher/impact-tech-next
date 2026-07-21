@@ -66,7 +66,7 @@ export function Header({ activeLink = "home" }: HeaderProps) {
         <nav className="flex justify-between items-center">
           <Link className="text-2xl font-black text-white" href="/">
             <Image
-              alt="Impact Tech logo"
+              alt="Impact Techs logo"
               className="h-10 w-auto"
               src="/images/LOGO-IMPACT-TECH.png"
               width={150}
@@ -123,7 +123,7 @@ export function Header({ activeLink = "home" }: HeaderProps) {
               onClick={closeMobileMenu}
             >
               <Image
-                alt="Impact Tech logo"
+                alt="Impact Techs logo"
                 className="h-8 w-auto"
                 src="/images/LOGO-IMPACT-TECH.png"
                 width={120}
